@@ -29,25 +29,23 @@
 </template>
 
 <script>
-import bannerApi from '@/api/banner';
+import { mapState } from 'vuex';
+
 export default {
+    
     data() {
         return {
-            banners : []
         }
     },
+    computed: {
+        ...mapState('banner', {
+            banners: state => state.mainBanners
+        })
+    },
     created() {
-        bannerApi.getMainSlideBanners().then(response => {
-            this.banners = [].concat(response.data);
-            //this.banners = response.data;
-
-            //response.data.push(123);
-
-            this.$nextTick(() => {
-                $(this.$refs.slick).slick1();
-            }) 
-            
-        }) 
+       this.$store.dispatch('banner/setMainBanners').then(() => {
+           $(this.$refs.slick).slick1();
+       })
     }
 }
 </script>
