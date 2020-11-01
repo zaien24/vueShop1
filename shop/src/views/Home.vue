@@ -1,17 +1,20 @@
 <template>
   <div class="home">
-      home page
       <SlideBanner />
+      <BestProductList />
   </div>
 </template>
 
 <script>
 import SlideBanner from '@/components/home/SlideBanner.vue';
+import BestProductList from '@/components/home/BestProductList.vue';
 
 export default {
   name: 'Home',
   components: {
-      SlideBanner
+      SlideBanner,
+      BestProductList
   }
 }
 </script>
+

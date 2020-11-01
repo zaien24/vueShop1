@@ -4,91 +4,70 @@
 		<div class="container">
 			<div class="row">
 				<div class="col-sm-10 col-md-8 col-lg-4 m-l-r-auto">
-					<!-- block1 -->
-					<div class="block1 hov-img-zoom pos-relative m-b-30">
-						<img src="images/banner-02.jpg" alt="IMG-BENNER">
+					<template v-for="product in firstColumn">
+						<!-- block1 -->
+						<div class="block1 hov-img-zoom pos-relative m-b-30">
+							<img :src="product.image" alt="IMG-BENNER">
 
-						<div class="block1-wrapbtn w-size2">
-							<!-- Button -->
-							<a href="#" class="flex-c-m size2 m-text2 bg3 hov1 trans-0-4">
-								Dresses
-							</a>
-						</div>
-					</div>
-
-					<!-- block1 -->
-					<div class="block1 hov-img-zoom pos-relative m-b-30">
-						<img src="images/banner-05.jpg" alt="IMG-BENNER">
-
-						<div class="block1-wrapbtn w-size2">
-							<!-- Button -->
-							<a href="#" class="flex-c-m size2 m-text2 bg3 hov1 trans-0-4">
-								Sunglasses
-							</a>
-						</div>
-					</div>
-				</div>
-
-				<div class="col-sm-10 col-md-8 col-lg-4 m-l-r-auto">
-					<!-- block1 -->
-					<div class="block1 hov-img-zoom pos-relative m-b-30">
-						<img src="images/banner-03.jpg" alt="IMG-BENNER">
-
-						<div class="block1-wrapbtn w-size2">
-							<!-- Button -->
-							<a href="#" class="flex-c-m size2 m-text2 bg3 hov1 trans-0-4">
-								Watches
-							</a>
-						</div>
-					</div>
-
-					<!-- block1 -->
-					<div class="block1 hov-img-zoom pos-relative m-b-30">
-						<img src="images/banner-07.jpg" alt="IMG-BENNER">
-
-						<div class="block1-wrapbtn w-size2">
-							<!-- Button -->
-							<a href="#" class="flex-c-m size2 m-text2 bg3 hov1 trans-0-4">
-								Footerwear
-							</a>
-						</div>
-					</div>
-				</div>
-
-				<div class="col-sm-10 col-md-8 col-lg-4 m-l-r-auto">
-					<!-- block1 -->
-					<div class="block1 hov-img-zoom pos-relative m-b-30">
-						<img src="images/banner-04.jpg" alt="IMG-BENNER">
-
-						<div class="block1-wrapbtn w-size2">
-							<!-- Button -->
-							<a href="#" class="flex-c-m size2 m-text2 bg3 hov1 trans-0-4">
-								Bags
-							</a>
-						</div>
-					</div>
-
-					<!-- block2 -->
-					<div class="block2 wrap-pic-w pos-relative m-b-30">
-						<img src="images/icons/bg-01.jpg" alt="IMG">
-
-						<div class="block2-content sizefull ab-t-l flex-col-c-m">
-							<h4 class="m-text4 t-center w-size3 p-b-8">
-								Sign up & get 20% off
-							</h4>
-
-							<p class="t-center w-size4">
-								Be the frist to know about the latest fashion news and get exclu-sive offers
-							</p>
-
-							<div class="w-size2 p-t-25">
+							<div class="block1-wrapbtn w-size2">
 								<!-- Button -->
-								<a href="#" class="flex-c-m size2 bg4 bo-rad-23 hov1 m-text3 trans-0-4">
-									Sign Up
+								<router-link to="/" class="flex-c-m size2 m-text2 bg3 hov1 trans-0-4">
+									{{ product.linkText }}
+								</router-link>
+							</div>
+						</div>
+					</template>
+				</div>
+
+				<div class="col-sm-10 col-md-8 col-lg-4 m-l-r-auto">
+					<template v-for="product in secondColumn">
+						<!-- block1 -->
+						<div class="block1 hov-img-zoom pos-relative m-b-30">
+							<img :src="product.image" alt="IMG-BENNER">
+
+							<div class="block1-wrapbtn w-size2">
+								<!-- Button -->
+								<router-link to="/" class="flex-c-m size2 m-text2 bg3 hov1 trans-0-4">
+									{{ product.linkText }}
+								</router-link>
+							</div>
+						</div>
+					</template>
+				</div>
+
+				<div class="col-sm-10 col-md-8 col-lg-4 m-l-r-auto">
+						<!-- block1 -->
+						<div class="block1 hov-img-zoom pos-relative m-b-30">
+							<img :src="thirdColumn.image" alt="IMG-BENNER">
+
+							<div class="block1-wrapbtn w-size2">
+								<!-- Button -->
+								<a href="#" class="flex-c-m size2 m-text2 bg3 hov1 trans-0-4">
+									{{ thirdColumn.linkText }}
 								</a>
 							</div>
 						</div>
-					</div>
+						<!-- block2 -->
+						<div class="block2 wrap-pic-w pos-relative m-b-30">
+							<img src="images/icons/bg-01.jpg" alt="IMG">
+
+							<div class="block2-content sizefull ab-t-l flex-col-c-m">
+								<h4 class="m-text4 t-center w-size3 p-b-8">
+									Sign up & get 20% off
+								</h4>
+<!-- block2 -->
+								<p class="t-center w-size4">
+									Be the frist to know about the latest fashion news and get exclu-sive offers
+								</p>
+
+								<div class="w-size2 p-t-25">
+									<!-- Button -->
+									<a href="#" class="flex-c-m size2 bg4 bo-rad-23 hov1 m-text3 trans-0-4">
+										Sign Up
+									</a>
+								</div>
+							</div>
+						</div>
 				</div>
 			</div>
 		</div>
@@ -100,23 +79,31 @@
 import { mapState } from 'vuex'
 
 export default {
-    computed: {
-		...mapState('product', {
-			products: state => state.bestProducts
-		}),
-		
-		firstColumn() {
-			return this.products.slice(0, 2);
-		}, 
-		secondColumn() {
-			return this.products.slice(2, 4);
-		}, 
-		thirdColumn() {
-			return this.products[4];
-		}
-	}, 
+   computed: {
+        ...mapState('product', {
+          products: state => state.bestProducts
+        }),
+        firstColumn() {
+          if (this.products.length >= 2) {
+            return this.products.slice(0, 2);
+          }
+          return [];
+        },
+        secondColumn() {
+          if (this.products.length >= 4) {
+            return this.products.slice(2,4);
+          }
+          return [];
+        },
+        thirdColumn() {
+          if (this.products.length >= 5) {
+            return this.products[4];
+          }
+          return [];
+        }
+    },
 	created() {
-		this.$store.dispathc('product/setBestProducts');
+		this.$store.dispatch('product/setBestProducts');
 	}
 }
 </script>

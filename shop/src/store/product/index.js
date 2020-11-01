@@ -1,3 +1,4 @@
+import productApi from '@/api/product';
 export default {
     namespaced : true,
     state: {
@@ -9,7 +10,7 @@ export default {
         }
     },
     actions: {
-        aysnc setBestProducts({ commit }) {
+        async setBestProducts({ commit }) {
             const response = await productApi.getBestProducts();
 
             commit('setBestProducts', response.data);
