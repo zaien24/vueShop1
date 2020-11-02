@@ -3,11 +3,13 @@ import { createStore } from 'vuex'
 
 import banner from './banner/index';
 import product from './product/index';
+import cart from './cart/index';
 
 export default createStore({
   modules: {
     banner, 
-    product
+    product,
+    cart
   },
   state: {
   },
