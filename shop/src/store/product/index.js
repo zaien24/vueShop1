@@ -2,6 +2,8 @@ import productApi from '@/api/product';
 export default {
     namespaced : true,
     state: {
+        products: [],
+        totalProducts: 0,
         bestProducts: [],
         featuredProducts: []
         
@@ -12,6 +14,12 @@ export default {
         },
         setFeaturedProducts(state, products) {
             state.featuredProducts = [].concat(products);
+        },
+        setProducts(state, products) {
+            state.products = [].concat(products);
+        },
+        setTotalProducts(state, totalCount) {
+            state.totalProducts = totalCount;
         }
     },
     actions: {
@@ -24,6 +32,12 @@ export default {
             const response = await productApi.getFeaturedProducts();
 
             commit('setFeaturedProducts', response.data);
+        },
+        async setProducts({ commit }) {
+            const response = await productApi.getProducts();
+
+            commit('setProducts', response.data.products);
+            commit('setTotalProducts', response.data.total);
         }
 
     }
