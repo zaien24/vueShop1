@@ -13,11 +13,17 @@ export default {
             state.items.push({
                 ...item
             });
+        },
+        delItem(state, id) {
+            state.items = state.items.filter(item => item.id !== id);
         }
     },
     actions: {
         addItem({ commit }, item) {
             commit('addItem', item);
+        },
+        delItem({ commit }, id) {
+            commit('delItem', id);
         }
     }
 }

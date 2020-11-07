@@ -49,9 +49,9 @@
 								<a>Shop</a>
 							</router-link>
 
-							<li>
-								<a href="cart.html">Features</a>
-							</li>
+							<router-link :to="{name: 'features'}" tag="li" active-class="sale-noti" exact>
+								<a>Features</a>
+							</router-link>
 						</ul>
 					</nav>
 				</div>
