@@ -7,7 +7,8 @@ export default {
         totalProducts: 0,
         bestProducts: [],
         featuredProducts: [],
-        page: 0
+        page: 0,
+        priceRange: null
         
     },
     mutations: {
@@ -25,6 +26,9 @@ export default {
         },
         setPage(state, page) {
             state.page = page;
+        },
+        setPriceRange(state, priceRange) {
+            state.priceRange = priceRange;
         }
     },
     actions: {
@@ -38,12 +42,17 @@ export default {
 
             commit('setFeaturedProducts', response.data);
         },
-        async setProducts({ commit }, page = 0) {
-            const response = await productApi.getProducts(page);
+        async setProducts({ commit, state }, page = 0) {
+            const response = await productApi.getProducts(page, state.priceRange);
 
             commit('setProducts', response.data.products);
             commit('setTotalProducts', response.data.total);
             commit('setPage', page);
+        },
+        async setPriceRange({ commit, dispatch }, priceRange) {
+            commit('setPriceRange', priceRange);
+
+            dispatch('setProducts');
         }
 
     }
