@@ -39,6 +39,9 @@ export default {
                     cartItem[0].qty += qty;
                 }
             }
+        },
+        clearCart(state) {
+            state.items = [];
         }
     },
     actions: {
@@ -59,6 +62,9 @@ export default {
                 id,
                 qty: -1
             })
+        },
+        clearCart({ commit }) {
+            commit('clearCart');
         }
     }
 }

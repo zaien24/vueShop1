@@ -17,8 +17,8 @@
 
 				<div class="size10 trans-0-4 m-t-10 m-b-10">
 					<!-- Button -->
-					<button class="flex-c-m sizefull bg1 bo-rad-23 hov1 s-text1 trans-0-4">
-						Update Cart
+					<button class="flex-c-m sizefull bg1 bo-rad-23 hov1 s-text1 trans-0-4" @click="clearCart()">
+						Cleart Cart
 					</button>
 				</div>
 			</div>
@@ -74,8 +74,8 @@
 
 						<div class="size14 trans-0-4 m-b-10">
 							<!-- Button -->
-							<button class="flex-c-m sizefull bg1 bo-rad-23 hov1 s-text1 trans-0-4">
-								Update Totals
+							<button class="flex-c-m sizefull bg1 bo-rad-23 hov1 s-text1 trans-0-4" >
+								Update Cart
 							</button>
 						</div>
 					</div>
@@ -108,6 +108,11 @@
 import CartList from  '@/components/features/CartList.vue';
 
 export default {
+	methods: {
+		clearCart() {
+			this.$store.dispatch('cart/clearCart');
+		}
+	},
     components: {
         CartList
     }
