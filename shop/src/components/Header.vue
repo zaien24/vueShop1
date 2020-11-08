@@ -41,11 +41,11 @@
 				<div class="wrap_menu">
 					<nav class="menu">
 						<ul class="main_menu">
-							<router-link :to="{name: 'Home'}" tag="li" active-class="sale-noti" exact>
+							<router-link :to="{ name: 'Home'}" tag="li" active-class="sale-noti" exact>
 								<a>Home</a>
 							</router-link>
 
-							<router-link :to="{name: 'shop'}" tag="li" active-class="sale-noti" exact>
+							<router-link :to="{ name: 'shop'}" tag="li" active-class="sale-noti" exact>
 								<a>Shop</a>
 							</router-link>
 
@@ -66,7 +66,7 @@
 
 					<div class="header-wrapicon2">
 						<img src="images/icons/icon-header-02.png" class="header-icon1 js-show-header-dropdown" alt="ICON">
-						<span class="header-icons-noti">{{ cartItems.length }}</span>
+						<span class="header-icons-noti">{{ totalCartQty }}</span>
 
 						<!-- Header cart noti -->
 						<div class="header-cart header-dropdown">
@@ -83,7 +83,7 @@
 											</a>
 
 											<span class="header-cart-item-info">
-												1 x ${{ product.price }}
+												{{ product.qty }} x ${{ product.price }}
 											</span>
 										</div>
 									</li>
@@ -134,7 +134,7 @@
 
 					<div class="header-wrapicon2">
 						<img src="images/icons/icon-header-02.png" class="header-icon1 js-show-header-dropdown" alt="ICON">
-						<span class="header-icons-noti">{{ cartItems.length }}</span>
+						<span class="header-icons-noti">{{ totalCartQty }}</span>
 
 						<!-- Header cart noti -->
 						<div class="header-cart header-dropdown">
@@ -151,7 +151,7 @@
 											</a>
 
 											<span class="header-cart-item-info">
-												1 x ${{ product.price }}
+												{{ product.qty }} x ${{ product.price }}
 											</span>
 										</div>
 								</li>
@@ -271,7 +271,8 @@ export default {
 			cartItems: state => state.items
 		}),
 		...mapGetters('cart', {
-			totalCartPrice: 'totalPrice'
+			totalCartPrice: 'totalPrice',
+			totalCartQty: 'totalQty'
 		})
 	}
     
